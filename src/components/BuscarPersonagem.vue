@@ -40,8 +40,22 @@ const emit = defineEmits<{
   font-size: 1.2rem;
 }
 
-.botao-busca {
+button  {
+  width: 180px;
+  height: 40px;
+  cursor: pointer;
+  background:  #e91b1b;
+  border-radius: 10px;
+  font-weight: 500;
+  border: none;
+  font-size: 1.5rem;
+  padding: 5px;
+  color: aliceblue;
   margin-left: 10px;
-  background-color: #ed1d24;
+}
+
+button:hover {
+  background-color: black;
+  color: #fff;
 }
 </style>

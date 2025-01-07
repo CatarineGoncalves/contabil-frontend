@@ -1,14 +1,9 @@
-<script setup lang="ts">
-import MarvelPersonagemPage from './page/marvelPersonagemPage.vue';
-
-</script>
-
 <template>
-  <MarvelPersonagemPage />
+  <router-view></router-view>
 </template>
 
 <style>
-  body {
-    background-color: rgb(31, 31, 31);
-  }
+body {
+  background-color: rgb(31, 31, 31);
+}
 </style>

@@ -1,18 +1,19 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import ListagemPersonagem from '@/components/ListagemPersonagem.vue';
 import DetalhesPersonagem from '@/components/DetalhesPersonagem.vue';
+import MarvelPersonagemPage from '@/page/marvelPersonagemPage.vue';
 
 const routes = [
   {
     path: '/',
     name: 'home',
-    component: ListagemPersonagem,
+    component: MarvelPersonagemPage,
   },
   {
     path: '/personagem/:id',
-    name: 'personagem',
+    name: 'personagem-detalhes',
     component: DetalhesPersonagem,
-  },
+    props: true,
+  }
 ];
 
 const router = createRouter({

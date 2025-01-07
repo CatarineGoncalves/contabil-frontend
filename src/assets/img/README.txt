@@ -10,10 +10,6 @@ Este é um projeto desenvolvido com Vue.js para consumir a API da Marvel e exibi
   - **assets**  
     Contém a imagem do logo da Marvel.
   - **components**  
-        - **_teste_**
-            Teste do Componente dos Cards dos Personagens
-            - **CardPersonagem.test.ts**
-        
     Componentes reutilizáveis da aplicação.
       - **Carregamento.vue**  
         Exibe um spinner de carregamento enquanto os dados estão sendo carregados.
@@ -59,13 +55,13 @@ Este é um projeto desenvolvido com Vue.js para consumir a API da Marvel e exibi
    npm run dev
    ```
 
-4. O projeto estará rodando em `http://localhost:5173`.
+4. O projeto estará rodando em `http://localhost:3000`.
 
 ## Como Testar
 
 1. Para rodar os testes, execute o seguinte comando:
    ```bash
-   npx vitest run
+   npm run test
    ```
 
 ## Configurações da API da Marvel
@@ -74,8 +70,8 @@ A configuração da API Marvel está armazenada em `src/config/marvelConfig.ts`.
 
 ```ts
 export const Marvel_Config = {
-  PUBLIC_KEY: 'AQUI VOCE INSERE A SUA rs',
-  PRIVATE_KEY: 'AQUI VOCE INSERE A SUA rs',
+  PUBLIC_KEY: '789944b82f93a085b0a3a2223d05a064',
+  PRIVATE_KEY: '79a1bc15f76a6a2a61b2376c16bb0477d9f1ffa',
   BASE_URL: 'https://gateway.marvel.com/v1/public'
 };
 ```
@@ -154,3 +150,73 @@ describe('CardPersonagem', () => {
   });
 });
 ```
+
+---
+
+## Estilos
+
+Os estilos utilizados são baseados em **CSS Vanilla**. Para a personalização da aparência, você pode ajustar os estilos diretamente nos arquivos `.vue` ou em arquivos CSS globais.
+
+```css
+/* Global */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4 {
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.container {
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 1200px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #e91b1b;
+}
+
+h2 {
+  margin-top: 20px;
+  font-size: 1.8rem;
+  color: #444;
+}
+
+h3 {
+  font-size: 1.5rem;
+  color: #555;
+}
+
+code {
+  font-family: 'Courier New', Courier, monospace;
+}
+```
+
+---
+
+Espero que este arquivo ajude a documentar o seu projeto de forma clara e eficaz! Com isso, você tem uma visão geral das funcionalidades e estrutura do seu código.
+

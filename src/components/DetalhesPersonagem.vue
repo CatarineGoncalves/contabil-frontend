@@ -1,20 +1,26 @@
-
-
 <template>
   <div class="detalhes-personagem">
-    <router-link to="/" class="botao-voltar">← Voltar para Lista</router-link>
-    
+    <button class="back-button" @click="router.push('/')">Voltar</button>
+
     <CarregandoSpinner v-if="carregando" />
+
     <div v-else-if="erro" class="erro">{{ erro }}</div>
+
     <div v-else-if="personagem" class="info-personagem">
-      <img 
-        :src="`${personagem.thumbnail.path}.${personagem.thumbnail.extension}`" 
+      <img
+        :src="`${personagem.thumbnail.path}.${personagem.thumbnail.extension}`"
         :alt="personagem.name"
-      >
+      />
       <div class="info">
-        <h1>{{ personagem.name }}</h1>
-        <p>{{ personagem.description || 'Nenhuma descrição disponível.' }}</p>
-        
+        <div class="header-info">
+          <h1>{{ personagem.name }}</h1>
+          <p>
+            {{
+              personagem.description ||
+              "Mais um personagem incrível da Marvel que não possui descrição sobre :("
+            }}
+          </p>
+        </div>
         <h2>Quadrinhos</h2>
         <ul v-if="personagem.comics.items.length">
           <li v-for="comic in personagem.comics.items" :key="comic.name">
@@ -27,45 +33,54 @@
   </div>
 </template>
 
-
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
-import { useRoute } from 'vue-router';
-import { metodoBuscarPersonagemPorId } from './../services/marvelServices';
-import type { Personagem } from '@/types/interfaceMarvel';
+import { ref, onMounted } from "vue";
+import { useRoute, useRouter } from "vue-router";
+import { metodoBuscarPersonagemPorId } from "./../services/marvelServices";
+import type { Personagem } from "@/types/interfaceMarvel";
 
 const route = useRoute();
+const router = useRouter();
 const personagem = ref<Personagem | null>(null);
 const carregando = ref(true);
-const erro = ref('');
+const erro = ref("");
 
-onMounted(() => {
-    metodoDetalhamentoPersonagem();
-});
-
-
-const metodoDetalhamentoPersonagem = async () => {
+// Atualize o método para carregar os dados corretamente
+onMounted(async () => {
   try {
     const id = route.params.id as string;
-    const resultado = await metodoBuscarPersonagemPorId(id);
-
-    if (resultado) {
-      personagem.value = resultado;
-    } else {
-      erro.value = 'Personagem não encontrado';
-    }
-  } catch (e) {
-    erro.value = 'Detales não encontrado';
+    personagem.value = await metodoBuscarPersonagemPorId(id);
+  } catch (error) {
+    erro.value = "Erro ao carregar o personagem";
   } finally {
     carregando.value = false;
   }
-}
-
-
+});
 </script>
 
-
 <style scoped>
+.info-personagem {
+  display: flex;
+  flex-direction: column-reverse;
+  width: 60%;
+  margin-top: 3em;
+  place-self: center;
+  color: white;
+}
+
+.header-info {
+  margin-bottom: 5em;
+}
+
+h1 {
+  font-size: 3rem;
+  text-align: center;
+}
+
+p {
+  text-align: center;
+}
+
 .detalhes-personagem {
   padding: 20px;
   max-width: 1200px;

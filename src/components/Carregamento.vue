@@ -15,7 +15,6 @@ import marvelLogo from "../assets/img/images.png"; // Importando a imagem
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: red;
   width: 100%;
   height: 98vh;
 }
@@ -27,7 +26,7 @@ import marvelLogo from "../assets/img/images.png"; // Importando a imagem
 
 .spinner {
   border: 4px solid rgba(255, 255, 255, 0.3);
-  border-top: 4px solid #000000;
+  border-top: 4px solid #da2626;
   border-radius: 50%;
   width: 50px;
   height: 50px;

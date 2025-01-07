@@ -6,30 +6,25 @@
       :alt="personagem.name"
     />
     <p>{{ personagem.name }}</p>
-    <button @click="irParaDetalhes(personagem.id)">Saiba Mais</button>
+    
+    <!-- Envolva o botão dentro do router-link -->
+    <router-link :to="{ name: 'personagem-detalhes', params: { id: personagem.id.toString() } }">
+      <button>Saiba Mais</button>
+    </router-link>
 
   </div>
 </template>
 
 <script setup lang="ts">
-import { useRouter } from 'vue-router';
-const router = useRouter();
-
 import type { Personagem } from "@/types/interfaceMarvel";
 
 defineProps<{
-  personagem: Personagem
+  personagem: Personagem;
 }>();
-
-const irParaDetalhes = (id: number) => {
-  console.log(id)
-  router.push({ name: 'personagem', params: { id } });
-};
-
-
 </script>
 
-<style scoped>
+
+<style scope>
 .card-personagem {
   height: 300px;
   width: 230px;
@@ -43,8 +38,14 @@ const irParaDetalhes = (id: number) => {
   align-items: center;
   border-radius: 10px;
   padding: 5px;
+  text-align: -webkit-center;
 }
 
+p {
+  font-family: "Bebas Neue", sans-serif;  
+  font-weight: 600 ;
+  text-transform: uppercase;
+}
 button  {
   width: 180px;
   height: 40px;

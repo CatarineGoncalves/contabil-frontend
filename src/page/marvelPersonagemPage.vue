@@ -1,11 +1,13 @@
 <template>
   <div class="container">
+    
     <Carregamento v-if="carregando" />
-
+    
     <template v-else>
+      <img style="display:flex; justify-self:center; margin-top: 4em" :src="MarvelLogo" alt="logo da marvel">
       <BuscaInput @buscar="carregarPersonagens" />
       
-      <ListagemPersonagem  :personagens="personagens" @saiba-mais="abrirDialog"  />
+      <ListagemPersonagem  :personagens="personagens" @saiba-mais="irParaDetalhes"  />
     </template>
   </div>
 </template>
@@ -17,6 +19,15 @@ import BuscaInput from "@/components/BuscarPersonagem.vue";
 import ListagemPersonagem from "@/components/ListagemPersonagem.vue";
 import Carregamento from "@/components/Carregamento.vue";
 import type { Personagem } from "@/types/interfaceMarvel";
+import {  useRouter } from 'vue-router';
+import MarvelLogo from '@/assets/img/images.png'
+const router = useRouter();
+
+const irParaDetalhes = (id: number) => {
+  router.push({ name: 'personagem-detalhes', params: { id: id.toString() } });
+};
+
+
 
 const personagens = ref<Personagem[]>([]);
 const carregando = ref(true);
@@ -33,9 +44,6 @@ const carregarPersonagens = async (busca?: string) => {
   }
 };
 
-const abrirDialog = (personagem: Personagem) => {
-  console.log('Abrir dialog para:', personagem);
-};
 
 onMounted(() => {
   carregarPersonagens();

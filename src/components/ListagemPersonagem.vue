@@ -12,13 +12,18 @@
 import CardPersonagem from './CardPersonagem.vue';
 import type { Personagem } from '@/types/interfaceMarvel';
 
+
+
 defineProps<{
   personagens: Personagem[];
 }>();
 </script>
 
 <style scoped>
+
+
 .cards-container {
+  font-family: 'Marvel', Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

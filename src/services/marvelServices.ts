@@ -51,26 +51,18 @@ export const metodoBuscarPersonagensNaAPI = async ( offset = 0, limit = 100, ter
 };
 
 // Funão para o detalhamento do personagem, buscando pelo o id e desmotrando no btn saiba mais, Promise<Personagem | null> significa que ele tem uma promessa de resultado ou terá o resultado como nulo
+
 export const metodoBuscarPersonagemPorId = async (id: string): Promise<Personagem | null> => {
   const params = obterParametroAuth();
-  
+  console.log(params)
   try {
-    const response = await axios.get<RespostaAPI>(`${Marvel_Config.BASE_URL}/characters/${id}`, { params });
-    const personagem = response.data.data.results[0]; // Assumindo que `results` contém os dados do personagem.
-
-    if (personagem) {
-      return {
-        id: personagem.id,
-        name: personagem.name,
-        description: personagem.description,
-        thumbnail: personagem.thumbnail,
-        comics: personagem.comics,
-      };
-    }
-
-    return null; // Retorna `null` se nenhum personagem for encontrado.
+    const response = await axios.get(`${BASE_URL}/characters/${id}`, { params });
+    console.log(response)
+    console.log(response.data.data)
+    return response.data.data.results[0];
   } catch (error) {
-    console.error('Erro ao buscar personagem:', error);
-    return null; // Retorna `null` em caso de erro.
+    console.error("Erro ao obter personagem:", error);
+    throw error;
   }
 };
+
