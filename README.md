@@ -4,8 +4,7 @@
 Este é um projeto desenvolvido com Vue.js para consumir a API da Marvel e exibir informações sobre os personagens, incluindo nome, descrição, quadrinhos e uma imagem. O projeto usa o Vue Router para navegação entre páginas e o Vitest para testes.
 
 # Deploy do Projeto no Vercel para testes
-https://marvel-3odpdxqvr-catarine-goncalves-projects.vercel.app/
-
+https://contabil-frontend-6tvyp4r7u-catarine-goncalves-projects.vercel.app/
 
 ## Estrutura de Diretórios
 
