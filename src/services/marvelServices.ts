@@ -1,5 +1,3 @@
-import type { RespostaAPI } from "@/types/interfaceMarvel";
-import { Marvel_Config } from "@/config/marvel_config";
 import type { Personagem } from "@/types/interfaceMarvel";
 import axios from "axios";
 
